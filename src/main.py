@@ -1,14 +1,11 @@
 import cv2
 import numpy as np
-import matplotlib.pyplot as plt
 from skimage.metrics import mean_squared_error, peak_signal_noise_ratio
 from skimage import filters
 from skimage.data import camera
 from skimage.util import compare_images
 import skimage.io
 from skimage import measure
-from IPython.display import Image
-import pandas as pd
 
 def write_ssim(image, gt_image, result_dir):
     bs = cv2.imread(image, 1)
