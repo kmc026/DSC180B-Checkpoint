@@ -16,7 +16,7 @@ def write_ssim(image, gt_image, result_dir):
     bs_gt = cv2.imread(gt_image, 1)
     bs_gt = cv2.cvtColor(bs_gt, cv2.COLOR_RGBA2BGR)
     bs_gt = cv2.cvtColor(bs_gt, cv2.COLOR_RGBA2GRAY)
-    bs_gt = cv2.resize(bs_gt, bs.shape)
+    bs_gt = cv2.resize(bs_gt, (bs.shape[1], bs.shape[0]))
     bs_gt = bs_gt / bs_gt.max()
 
     # LoG
@@ -43,10 +43,10 @@ def write_ssim(image, gt_image, result_dir):
     bs_ssim_rob = skimage.metrics.structural_similarity(bs_gt, bs_rob)
 
     f = open(result_dir, "a")
-    f.write('SSIM of Image and Ground Truth')
-    f.write('Laplacian: ', bs_ssim_lap)
-    f.write('SobelX: ', bs_ssim_sob)
-    f.write('Canny: ', bs_ssim_can)
-    f.write('Prewitt: ', bs_ssim_prew)
-    f.write('Roberts: ', bs_ssim_rob)
-    f.write(' ')
+    f.write('SSIM of Image and Ground Truth' + '\n')
+    f.write('Laplacian: ' + str(bs_ssim_lap) + '\n')
+    f.write('SobelX: ' + str(bs_ssim_sob) + '\n')
+    f.write('Canny: ' + str(bs_ssim_can) + '\n')
+    f.write('Prewitt: ' + str(bs_ssim_prew) + '\n')
+    f.write('Roberts: ' + str(bs_ssim_rob) + '\n')
+    f.write('\n')
